@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %} ADSB Nancy {% endblock %}
+
+{% block body %}
+
+    <h1><strong>ADSB Nancy & Environs  </strong></h1>
+    
+    {{list_post}}
+    <br>
+
+    <div class="album  ">
+        <div class="grid-container">
+          <div class="row">
+            {% for ele in list_post %}
+            <div class="col-md-4 " >
+              <div class="card">
+                <!--{{"../static/images/uploads/"+ele[0]|string+".png"}}-->
+                {% if os.path.exists("static/images/uploads/"+ele[0]|string+".png") %}
+                <img class="card-img-top" style="height: 330px" src="../static/images/uploads/{{ele[0]}}.png" alt="image personalisée ">
+                {% else %}
+                <img class="card-img-top" style="height: 330px" src="../static/images/default.png" alt="image par défaut">
+                {% endif %}
+                <div class="card-head" >
+                  <span class="d-inline-block text-truncate" style="max-width: 100%;">
+                    <a class="card-title" style="font-size:120%; font-weight:bold" >{{ ele[1] }}</a>
+                  </span>
+                </div>
+                <div class="card-body" style="height: 200px">
+                    <div style="height: 180px">
+                    <div class="text">{{ele[2]}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      
+
+
+
+
+
+{% endblock %}

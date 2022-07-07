@@ -1,0 +1,65 @@
+<!-- err= str d'un message d'erreur
+    Pswd = bool si connecté ou pas
+list_post liste des toute la table post -->
+
+{% extends "layout.html" %}
+
+{% block title %} ADSB Nancy {% endblock %}
+
+{% block body %}
+    {% if not Pswd %}<!--  condition "si non connecté"--> 
+    <form action="/admin" class="formulaire" method="post" id="edit">
+        <fieldset>
+            <legend><strong><u> Connexion Editeur </u></strong></legend>
+    
+            <p style="color:#FF0000"">{{err}}</p>
+        <div class="form-outline mb-3">
+          <input type="password" id="password" placeholder="Mot de passe" class="form-control" name="mdp" required/>
+          <label class="form-label" for="password">Mot de passe</label>
+        </div>
+        <input type="checkbox" onclick="Afficher()"> Afficher le mot de passe
+      
+        <button type="submit" class="button">Envoyer</button>
+    </fieldset>  
+    </form>
+
+    {% else %}  <!-- condition "si connecté"-->
+    <h1><strong>Ajout d'un article  </strong></h1>
+
+    <form action="/ajout" class="formulaire" method="post" id="propose-post" enctype=multipart/form-data>
+        <fieldset>
+            <legend><strong><u> Nouveau post </u></strong></legend>
+    
+    
+
+        <div class="form-outline mb-3">
+          <input type="text" id="titre" placeholder="Titre" class="form-control" name="titre" required/>
+          <label class="form-label" for="titre">Titre</label>
+        </div>
+
+
+          <div class="form-outline mb-3">
+          <textarea class="form-control" id="contenu" name="contenu" placeholder="Contenu du post" rows="4"></textarea>
+          <label class="form-label" for="contenu">Contenu</label>
+        </div>
+        
+          Modifier l'image : <br>
+          <input type="file" name="image"><br />
+          <p>taille maximum : 16 Mo</p>
+        
+        
+      
+        <button type="submit" class="button">Envoyer</button>
+        </fieldset>  
+    </form>
+
+
+    {{list_post}}
+
+
+
+
+
+    {% endif %} <!-- fin de condition "si connecté"-->
+{% endblock %}
+

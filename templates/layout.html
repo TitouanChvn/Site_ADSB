@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+    <head style="position: fixed">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../static/css/style.css" rel="stylesheet">
+        <title> {% block title %}{% endblock %}  </title>
+   
+        <script>
+            function Afficher() {
+                        var input = document.getElementById("password");
+                        if (input.type=="password"){
+                          input.type = "text";
+                        }
+                        else {
+                          input.type = "password";
+                        }
+                        
+                      }
+        
+        </script>
+   
+   
+    </head>
+
+    <body>
+        <div class="topnav" id="myTopnav">
+            <a style="    vertical-align: middle; border-style: none;" >
+                <img href="/" style="height: 50px ; width: auto;" src="../static//images/Logo_rouge.png">
+            </a>
+            <a href="/">L'Association</a>
+            <a href="/">Le Don du Sang</a>
+            <a href="/"> Actualités </a>
+        </div>
+    
+        {% block body %}{% endblock %}
+    </body>
+
+
+    <footer style="position: fixed">
+        <a style="position: absolute; left : 10px ;"> LE FOOTER</a>
+        <img  style="height: 100% ; width: auto;" src="../static/images/Logo_rouge.png" alt="image personalisée du hub">
+					
+
+       
+
+    </footer>
+</html>
